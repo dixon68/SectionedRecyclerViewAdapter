@@ -51,6 +51,10 @@ final class ContactsSection extends Section {
         itemHolder.rootView.setOnClickListener(v ->
                 clickListener.onItemRootViewClicked(title, itemHolder.getAdapterPosition())
         );
+
+        itemHolder.rootView.setOnLongClickListener(v ->
+                clickListener.onItemRootViewLongClicked(this, itemHolder.getAdapterPosition())
+        );
     }
 
     @Override
@@ -68,5 +72,7 @@ final class ContactsSection extends Section {
     interface ClickListener {
 
         void onItemRootViewClicked(@NonNull final String sectionTitle, final int itemAdapterPosition);
+
+        boolean onItemRootViewLongClicked(final ContactsSection section, final int itemAdapterPosition);
     }
 }
